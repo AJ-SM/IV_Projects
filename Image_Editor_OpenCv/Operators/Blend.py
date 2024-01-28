@@ -1,5 +1,7 @@
 import numpy
 import cv2 as cv
+import matplotlib.image as img
+
 # Defining Blending Function -- > 
 
 def Img_Blend(img1,img2):
@@ -12,6 +14,6 @@ def Img_Blend(img1,img2):
                         
         else :
                 print("Image Dimension Aren't Matching,Please Add Images Of Same Dimension !! ")
-                return None
+                return img.imread('Image_Editor_OpenCv\Input_Images\error.jpg')
 
     

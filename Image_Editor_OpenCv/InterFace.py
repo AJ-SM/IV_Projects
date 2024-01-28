@@ -7,8 +7,9 @@ import matplotlib.image as img
 
 
 
-img1  = img.imread('Image_Editor_OpenCv\Input_Images\img1.png')
+img1  = img.imread('Image_Editor_OpenCv\Input_Images\Sample.jpeg')
 img2 = img.imread('Image_Editor_OpenCv\Input_Images\img2.png')
+
 
 # Printing Menu , Comparing And Cataching Error 
 def Interface():
