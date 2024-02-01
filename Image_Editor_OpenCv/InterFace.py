@@ -10,6 +10,7 @@ import matplotlib.image as img
 
 img1  = img.imread('Image_Editor_OpenCv\Input_Images\Sample.jpeg')
 img2 = img.imread('Image_Editor_OpenCv\Input_Images\img2.png')
+img3 = img.imread('Image_Editor_OpenCv\Input_Images\pngimg.com - pokemon_PNG148.png')
 
 
 # Printing Menu , Comparing And Cataching Error 
@@ -36,10 +37,14 @@ def Interface():
             elif input_number == 3 :
                 print("Rotation")           
             elif input_number == 4 :
-                imgplot = plot.imshow( Change_Brightness(img2))
+                imgplot = plot.imshow( Change_Brightness(img3))
                 plot.show()
 
             elif input_number == 5 :
+                print("Bluer")
+                
+
+            elif input_number == 6 :
                 break  
 
             else:
