@@ -2,6 +2,7 @@ import matplotlib.pyplot as plot
 
 from Operators.Crop import Img_Crop
 from Operators.Blend import Img_Blend
+from Operators.Brightness import Change_Brightness
 import matplotlib.image as img
 
 
@@ -35,7 +36,8 @@ def Interface():
             elif input_number == 3 :
                 print("Rotation")           
             elif input_number == 4 :
-                print("Brightness")
+                imgplot = plot.imshow( Change_Brightness(img2))
+                plot.show()
 
             elif input_number == 5 :
                 break  
