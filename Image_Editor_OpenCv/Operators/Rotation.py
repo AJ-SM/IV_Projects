@@ -39,8 +39,9 @@ def new_coordinate_genertor(original_coords, center, angle):
 
 
 
-def image_input():
-    image_location=input("image location :")
+def image_input(il):
+    image_location = il
+    
 
     image_rotation_direction=0
     while  image_rotation_direction not in ['clockwise','anticlockwise']:
@@ -50,7 +51,8 @@ def image_input():
     print(image_location)
 
     image=img.imread(image_location)
-    return (rotate_at_angle(image,image_rotation_direction,float(image_rotation_angle)))
+
+    image_show(rotate_at_angle(image,image_rotation_direction,float(image_rotation_angle)))
 
 
 def image_show(image,rotated_image,image_rotation_angle):
@@ -61,12 +63,10 @@ def image_show(image,rotated_image,image_rotation_angle):
     plt.axis('off')
     plt.subplot(1,2,2)
     plt.imshow(rotated_image)
-    plt.title(f"{str(image_rotation_angle) + "°"} Rotated Image")
+    plt.title(f"{str(image_rotation_angle)}  ° Rotated Image")
     plt.axis('off')
     plt.show()
         
 
 
 
-image,rotated_image,image_rotation_angle= image_input()
-image_show(image,rotated_image,image_rotation_angle)
