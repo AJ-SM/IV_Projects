@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 
 from Operators.Crop import Img_Crop
 from Operators.Blend import Img_Blend
@@ -9,8 +9,8 @@ import matplotlib.image as img
 
 
 
-img2 = 'Image_Editor_OpenCv\Input_Images\img2.png'
-img3 = 'Image_Editor_OpenCv\Input_Images\pngimg.com - pokemon_PNG148.png'
+img1 = 'Image_Editor_OpenCv\Input_Images\img2.png'
+img2 = 'Image_Editor_OpenCv\Input_Images\img1.png'
 
 
 # Printing Menu , Comparing And Cataching Error 
@@ -20,7 +20,8 @@ def Interface():
         print("2. Blending  ")
         print("3. Rotation ")
         print("4. Brightness manipulation ")
-        print("5. Exit ")
+        print("5. Blur ")
+        print("6. Exit ")
         print()
         input_number = input("Enter Your Choice : ")
         
@@ -29,17 +30,17 @@ def Interface():
         try:
             input_number = int(input_number) 
             if input_number == 1 :
-                imgplot = plot.imshow(Img_Crop(img3))
-                plot.show()
+                Img_Crop(img1)
+     
             elif input_number == 2 :
-                imgplot = plot.imshow(Img_Blend(img3,img2))
-                plot.show()
+                 Img_Blend(img1,img2)
+       
             elif input_number == 3 :
-                image_input(img2)
+                image_input(img1,img2)
          
             elif input_number == 4 :
-                imgplot = plot.imshow( Change_Brightness(img3))
-                plot.show()
+                Change_Brightness(img2)
+                
 
             elif input_number == 5 :
                 print("Bluer")
