@@ -26,12 +26,15 @@ hit_count={}
 hitted_ship_position_of={player1:[],player2:[]}
 chosen_ship=''
 visual_of_area_of={player1:{},player2:{}}
+possible_hit={player1:[],player2:[]}
+attacked_at={player1:[],player2:[]}
+remaining_position={player1:[],player2:[]}
 
 ''' 
     this is for setting the game for start of each new game
 '''
 def set_game():
-    global gamearea_of,ship_position_of,current_player,opposite_player,player1,player2,visual_of_area_of
+    global gamearea_of,ship_position_of,current_player,opposite_player,player1,player2,visual_of_area_of,remaining_position
     arr=np.array([[i,j] for i in range(game_size) for j in range(game_size)])
     gamearea_of[player1]=arr.reshape(game_size,game_size,2).copy()
     gamearea_of[player2]=arr.reshape(game_size,game_size,2).copy()
@@ -42,6 +45,7 @@ def set_game():
     current_player=player1
     opposite_player=player2
     visual_of_area_of={player1:{},player2:{}}
+    remaining_position={player1:[],player2:[]}
 
     reset_game()
 
@@ -49,18 +53,22 @@ def set_game():
     this is to reset the game
 '''
 def reset_game():
-    global ship_position_of,valid_coordinates,gamearea_of,occupied_coordinates,number_of_ships,hit_count,initial_no_of_ships,hitted_ship_position_of,visual_of_area_of,player2,player1
+    global ship_position_of,valid_coordinates,gamearea_of,occupied_coordinates,number_of_ships,hit_count,initial_no_of_ships,hitted_ship_position_of,visual_of_area_of,player2,player1,possible_hit,attacked_at,remaining_position
     for i in range(game_size):
         for j in range(game_size):
             ship_position_of[player1][position(player1,i,j)]=' - '
             ship_position_of[player2][position(player2,i,j)]=' - '
             visual_of_area_of[player1][position(player1,i,j)]=' - '
             visual_of_area_of[player2][position(player1,i,j)]=' - '
+            remaining_position[player1].append([i+1,j+1])
+            remaining_position[player2].append([i+1,j+1])
     occupied_coordinates[player1]=[]
     occupied_coordinates[player2]=[]
     number_of_ships={player1:initial_no_of_ships.copy(),player2:initial_no_of_ships.copy()}
     hit_count={player1:0,player2:0}
     hitted_ship_position_of={player1:[],player2:[]}
+    possible_hit={player1:[],player2:[]}
+    attacked_at={player1:[],player2:[]}
 
 
 '''
@@ -325,6 +333,7 @@ def ship_input():
 
 def display_of_hitMiss():
     clrscr()
+    display_current_player()
     print(f'{player1.capitalize()}: {hit_count[player1]} \t {player2.capitalize()}: {hit_count[player2]}')
     display_coordinates()
     display_visual_for(player1)
@@ -338,9 +347,20 @@ def run_hit_miss():
         validity_of_hit=False
         while not validity_of_hit:
             if game_mode==2 and current_player==player2:
-                a=np.reshape(valid_coordinates[current_player],(-1,2)).tolist()
-                hit_at=choice(a)
+                count=0
+                for i in possible_hit[current_player]:
+                    if i in attacked_at[current_player]:
+                        count+=1
+                if  count==len(possible_hit[current_player]) :
+                    hit_at=choice(remaining_position[opposite_player])
+                else:
+                    while True:
+                        a=choice(possible_hit[current_player])
+                        if is_list_an_element(valid_coordinates[current_player],a):
+                           hit_at=a
+                           break
                 validity_of_hit=True
+                
             
             else:
                 display_of_hitMiss()
@@ -360,6 +380,11 @@ def run_hit_miss():
                         visual_of_area_of[opposite_player][str(np.array(hit_at)-1)]=' X '
                         ship_position_of[opposite_player][str(np.array(hit_at)-1)]=' X '
                         hit_count[current_player]+=1
+                        attacked_at[current_player].append(hit_at)
+                        if hit_at in remaining_position[opposite_player]:
+                            remaining_position[opposite_player].remove(hit_at)
+                        x,y=hit_at
+                        possible_hit[current_player].extend([[x-1,y],[x+1,y],[x,y-1],[x,y+1]])
                         if game_mode==2 and current_player==player2:
                             display_of_hitMiss()
                             sleep(1)
@@ -376,7 +401,10 @@ def run_hit_miss():
                         hitted_ship_position_of[opposite_player].append(hit_at)
                         visual_of_area_of[opposite_player][str(np.array(hit_at)-1)]=' O '
                         ship_position_of[opposite_player][str(np.array(hit_at)-1)]=' O '
-                                              
+                        attacked_at[current_player].append(hit_at)
+                        if hit_at in remaining_position[opposite_player]:
+                            remaining_position[opposite_player].remove(hit_at)
+                        
                         if game_mode==2 and current_player==player2:
                             display_of_hitMiss()
                             sleep(1)
@@ -431,6 +459,7 @@ def start_game():
     declare_winner()
     sleep(2)
     clrscr()
+    print(remaining_position[opposite_player])
     print('Game ends')
     
 def main_game():
