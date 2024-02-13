@@ -7,8 +7,13 @@ import numpy as np
 
 
 def Compare_image(target, sample):
+    
+ 
+
+
 
     # Reading The Images For Comparison
+
     image = cv.imread(target)
     image2 = cv.imread(sample)
 

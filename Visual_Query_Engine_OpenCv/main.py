@@ -5,8 +5,8 @@ from Compare import Compare_image
 
 
 # Setting Required Folders 
-images_folder = "imgs"
-image = os.listdir("target")
+images_folder = "Visual_Query_Engine_OpenCv\\imgs"
+image = os.listdir(f'Visual_Query_Engine_OpenCv\\target')
 
 
 #Getting Succed Match As Dictonary 
@@ -25,8 +25,9 @@ threshold_value = 0.80
 
 if len(image) == 1:
     file_name = image[0]
-    file_path = os.path.join("target", file_name)
+    file_path = os.path.join("Visual_Query_Engine_OpenCv\\target", file_name)
     target = file_path
+    
     print(f"The Image Is Being Compared Is : {file_path}")
 else:
     print("There Are Many Images In The Directory. Please Throw Any One --> ")
@@ -37,7 +38,9 @@ for root, dirs, files in os.walk(images_folder):
  
     for file in files:
         # Calculating Result By Comparision 
-        result = Compare_image(target,os.path.join(root, file))
+        samples = os.path.join(root, file)
+    
+        result = Compare_image(target,samples)
 
         if result >=float(threshold_value):
             Succed_Match.update({file : result})
