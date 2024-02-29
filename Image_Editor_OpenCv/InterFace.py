@@ -4,6 +4,9 @@ from Operators.Crop import Img_Crop
 from Operators.Blend import Img_Blend
 from Operators.Rotation import image_input
 from Operators.Brightness import Change_Brightness
+from Operators.Blur import Blur_Image
+
+
 import matplotlib.image as img
 
 
@@ -43,7 +46,7 @@ def Interface():
                 
 
             elif input_number == 5 :
-                print("Bluer")
+                
                 
 
             elif input_number == 6 :
