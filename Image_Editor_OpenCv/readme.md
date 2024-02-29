@@ -1,7 +1,7 @@
 ## REQUIRNMENTS
 
-*Python3
-*Matplotlib
+* Python3
+* Matplotlib
 
 ## USE
 --> By running main.py file user will get choice menu.
@@ -21,8 +21,9 @@
 ©LT_50
 
 # CONTRIBUTERS
-[Kartik Mundkar ](https://github.com/kartik-mundkar)
-[Akash Tiwari](https://github.com/akash1203T)
+* [Kartik Mundkar ](https://github.com/kartik-mundkar)
+
+* [Akash Tiwari](https://github.com/akash1203T)
 
 
 
