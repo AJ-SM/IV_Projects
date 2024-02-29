@@ -13,7 +13,7 @@ def Img_Crop(img1):
     dist3 = int(input("D3 : "))
     dist4 = int(input("D4 : "))
 
-
+    # Proper croping the images by converting img into array and slicing it
     img2 =  img1[dist4:(img1.shape[0]-dist2),dist1:(img1.shape[1]-dist3)] 
 
     plt.suptitle("Crop")
@@ -25,9 +25,10 @@ def Img_Crop(img1):
     plt.title("Edited Image Image")
     plt.imshow(img2)
 
+    # Simpliy show the image
     plt.show()
 
-''' Anbody Explain it !! '''
+
 
 
 
