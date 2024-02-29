@@ -46,6 +46,7 @@ def Interface():
                 
 
             elif input_number == 5 :
+                Blur_Image(img1)
                 
                 
 
