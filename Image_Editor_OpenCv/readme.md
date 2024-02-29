@@ -4,12 +4,12 @@
 * Matplotlib
 
 ## USE
---> By running main.py file user will get choice menu.
---> One can choose any option by entering following numericals. 
---> Result of the following will be shown on a matplotlib windows seperately.
+* By running main.py file user will get choice menu.
+* One can choose any option by entering following numericals. 
+* Result of the following will be shown on a matplotlib windows seperately.
 
 ## RULES
---> for input image selection it mandatory to save your image as img1.png and img2.png , if two images are required. 
+* for input image selection it mandatory to save your image as img1.png and img2.png , if two images are required. 
 
 ## WORKFLOW
 * main.py file calls the InterFace.py file.
