@@ -2,6 +2,15 @@ from math import cos, radians, sin, sqrt
 from matplotlib import image as img, pyplot as plt
 import numpy as np
 
+
+
+
+# Summary Of Code 
+# Reading the image form interface file 
+''' Consider the center of image as the point of rotation the theta angle will be given so,
+looping through each pixel of image , and shifting it at an angle using simple polar coordinate
+and distance formula , forming a new image..'''
+
 def rotate_at_angle(image, direction, angle):
     rotate_sense=direction.lower()
     
@@ -54,7 +63,7 @@ def image_input(il):
 
     image_show(rotate_at_angle(image,image_rotation_direction,float(image_rotation_angle)))
 
-
+# Showing Images
 def image_show(image,rotated_image,image_rotation_angle):
     plt.suptitle("Image Rotation")
     plt.subplot(1,2,1)
