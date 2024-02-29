@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 
-def Blur(img):
+def Blur_Image(img):
   img1 = img
 
   while True:
@@ -52,4 +52,3 @@ def Blur(img):
   plt.show()
 
 
-Blur(img1)
